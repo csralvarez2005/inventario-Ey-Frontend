@@ -1,0 +1,55 @@
+<div class="container mt-5">
+  <h2>Lista de Áreas</h2>
+  <a routerLink="/areas/new" class="btn btn-primary mb-3">Crear Nueva Área</a>
+
+  <!-- Mostrar mensaje si no hay datos -->
+  <div *ngIf="filteredAreas().length === 0">
+    <p class="alert alert-warning">El area se encuentra vacia en base de datos.</p>
+  </div>
+
+  <!-- Mostrar tabla si hay datos -->
+  <div *ngIf="filteredAreas().length > 0">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Buscar por ID" [(ngModel)]="searchId">
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="fa fa-search"></i></span>
+              </div>
+            </div>
+          </th>
+          <th>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Buscar por Nombre" [(ngModel)]="searchNombre">
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="fa fa-search"></i></span>
+              </div>
+            </div>
+          </th>
+          <th>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Buscar por Tipo" [(ngModel)]="searchTipo">
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="fa fa-search"></i></span>
+              </div>
+            </div>
+          </th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let area of filteredAreas()">
+          <td>{{ area.id! }}</td>
+          <td>{{ area.nombre! }}</td>
+          <td>{{ area.tipo! }}</td>
+          <td>
+            <a [routerLink]="['/areas/edit', area.id!]" class="btn btn-warning">Editar</a>
+            <button (click)="area.id && deleteArea(area.id!)" class="btn btn-danger ml-2">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

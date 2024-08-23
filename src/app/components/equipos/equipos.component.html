@@ -1,0 +1,43 @@
+<div class="container">
+  <h2 class="mt-4">Listado de Equipos</h2>
+  <button class="btn btn-primary mb-3" [routerLink]="['/equipos/new']">Agregar Equipo</button>
+
+  <div *ngIf="equipos && equipos.length > 0; else noData">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Serie</th>
+          <th>Modelo</th>
+          <th>Tipo</th>
+          <th>Fecha de Compra</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let equipo of equipos">
+          <td>{{ equipo.nombre }}</td>
+          <td>{{ equipo.serie }}</td>
+          <td>{{ equipo.modelo }}</td>
+          <td>{{ equipo.tipo }}</td>
+          <td>{{ equipo.fechaDeCompra | date }}</td>
+          <td>
+            <button class="btn btn-sm btn-primary action-button" [routerLink]="['/equipos/edit', equipo.id]">
+              <i class="fas fa-edit"></i>
+            </button>
+            <button class="btn btn-sm btn-danger action-button" (click)="onDelete(equipo.id!)">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- Template for no data -->
+  <ng-template #noData>
+    <div class="alert alert-warning" role="alert">
+      No existen registros en la base de datos.
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,44 @@
+<div class="container">
+    <h2>Asignaciones de Equipos</h2>
+  
+    <!-- Mensaje de error si no hay asignaciones -->
+    <div *ngIf="errorMessage" class="alert alert-info">
+      {{ errorMessage }}
+    </div>
+  
+    <!-- Botón para asignar un nuevo equipo -->
+    <button class="btn btn-primary mb-3" [routerLink]="'/asignaciones/new'">
+      Asignar Equipo Nuevo
+    </button>
+  
+    <!-- Tabla de asignaciones -->
+    <table class="table table-striped" *ngIf="asignaciones.length > 0">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Área</th>
+          <th>Nombre del Equipo</th>
+          <th>Empleado</th>
+          <th>Fecha de Asignación</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let asignacion of asignaciones">
+          <td>{{ asignacion.id }}</td>
+          <td>{{ asignacion.nombreArea }}</td>
+          <td>{{ asignacion.nombreEquipo }}</td>
+          <td>{{ asignacion.nombreFuncionario }}</td>
+          <td>{{ asignacion.fechaAsignacion }}</td>
+          <td>
+            <button class="btn btn-warning btn-sm" (click)="editarAsignacion(asignacion)">
+              Editar
+            </button>
+            <button class="btn btn-danger btn-sm" (click)="eliminarAsignacion(asignacion.id)">
+              Eliminar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

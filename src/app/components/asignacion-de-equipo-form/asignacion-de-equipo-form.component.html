@@ -1,0 +1,37 @@
+<div class="container">
+    <h1 class="title">Asignación de Equipo</h1>
+    <form [formGroup]="asignacionForm" (ngSubmit)="onSubmit()" class="form-container">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="area">Área:</label>
+          <select formControlName="area" id="area" class="form-control">
+            <option value="" disabled selected>Seleccione un área</option>
+            <option *ngFor="let area of areas" [value]="area.nombre">{{ area.nombre }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="equipo">Equipo:</label>
+          <select formControlName="equipo" id="equipo" class="form-control">
+            <option value="" disabled selected>Seleccione un equipo</option>
+            <option *ngFor="let equipo of equipos" [value]="equipo.nombre">{{ equipo.nombre }}</option>
+          </select>
+        </div>
+      </div>
+  
+      <div class="form-row">
+        <div class="form-group">
+          <label for="funcionario">Funcionario:</label>
+          <select formControlName="funcionario" id="funcionario" class="form-control">
+            <option value="" disabled selected>Seleccione un funcionario</option>
+            <option *ngFor="let funcionario of funcionarios" [value]="funcionario.nombreFuncionario">{{ funcionario.nombreFuncionario }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="fechaAsignacion">Fecha de Asignación:</label>
+          <input type="date" formControlName="fechaAsignacion" id="fechaAsignacion" class="form-control" />
+        </div>
+      </div>
+  
+      <button type="submit" class="btn-submit" [disabled]="asignacionForm.invalid">Guardar Asignación</button>
+    </form>
+  </div>

@@ -20,49 +20,66 @@ export class AreaComponent implements OnInit {
     this.loadAreas();
   }
 
+  /**
+   * Carga todas las áreas desde el servicio.
+   */
   loadAreas(): void {
-    this.areaService.getAreas().subscribe(data => {
-      this.areas = data;
+    this.areaService.getAreas().subscribe({
+      next: (data) => {
+        this.areas = data;
+      },
+      error: (err) => {
+        console.error('Error al cargar las áreas:', err.message);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Ocurrió un problema al cargar las áreas. Por favor, inténtelo más tarde.',
+        });
+      },
     });
   }
 
-  // Método para filtrar áreas según los valores de búsqueda
+  /**
+   * Filtra las áreas según los valores ingresados en los campos de búsqueda.
+   */
   filteredAreas(): Area[] {
-    return this.areas.filter(area => 
-      (this.searchId === '' || area.id?.toString().includes(this.searchId)) &&
-      (this.searchNombre === '' || area.nombre.toLowerCase().includes(this.searchNombre.toLowerCase())) &&
-      (this.searchTipo === '' || area.tipo.toLowerCase().includes(this.searchTipo.toLowerCase()))
+    return this.areas.filter(
+      (area) =>
+        (this.searchId === '' || area.areaId?.toString().includes(this.searchId)) &&
+        (this.searchNombre === '' || area.nombre.toLowerCase().includes(this.searchNombre.toLowerCase())) &&
+        (this.searchTipo === '' || area.tipo.toLowerCase().includes(this.searchTipo.toLowerCase()))
     );
   }
 
+  /**
+   * Elimina un área por su ID con confirmación previa.
+   * @param id ID del área a eliminar.
+   */
   deleteArea(id: number): void {
     Swal.fire({
       title: '¿Estás seguro?',
-      text: "No podrás recuperar esta área después de eliminarla.",
+      text: 'No podrás recuperar esta área después de eliminarla.',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Sí, eliminar'
+      confirmButtonText: 'Sí, eliminar',
     }).then((result) => {
       if (result.isConfirmed) {
         this.areaService.deleteArea(id).subscribe({
           next: () => {
-            Swal.fire(
-              'Eliminado!',
-              'El área ha sido eliminada.',
-              'success'
-            ).then(() => {
+            Swal.fire('Eliminado!', 'El área ha sido eliminada con éxito.', 'success').then(() => {
               this.loadAreas();
             });
           },
-          error: () => {
+          error: (err) => {
+            console.error('Error al eliminar el área:', err.message);
             Swal.fire({
               icon: 'error',
               title: 'Error',
-              text: 'Ocurrió un error al eliminar el área.',
+              text: 'No se pudo eliminar el área. Por favor, inténtelo más tarde.',
             });
-          }
+          },
         });
       }
     });

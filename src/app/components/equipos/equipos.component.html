@@ -22,10 +22,10 @@
           <td>{{ equipo.tipo }}</td>
           <td>{{ equipo.fechaDeCompra | date }}</td>
           <td>
-            <button class="btn btn-sm btn-primary action-button" [routerLink]="['/equipos/edit', equipo.id]">
+            <button class="btn btn-sm btn-primary action-button" [routerLink]="['/equipos/edit', equipo.equipoId]">
               <i class="fas fa-edit"></i>
             </button>
-            <button class="btn btn-sm btn-danger action-button" (click)="onDelete(equipo.id!)">
+            <button class="btn btn-sm btn-danger action-button" (click)="onDelete(equipo.equipoId!)">
               <i class="fas fa-trash-alt"></i>
             </button>
           </td>

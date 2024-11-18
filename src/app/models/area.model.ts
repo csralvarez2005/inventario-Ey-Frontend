@@ -1,5 +1,5 @@
 export class Area {
-    id?: number;
+  areaId?: number;
     nombre!: string;
     tipo!: string;
 

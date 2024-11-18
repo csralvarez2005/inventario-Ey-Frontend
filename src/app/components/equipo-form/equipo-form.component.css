@@ -1,67 +1,87 @@
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-y: auto;
-    font-family: Arial, sans-serif;
-}
-
+/* General container */
 .container {
-    max-height: 100vh;
-    overflow-y: auto;
+    max-width: 600px;
+    margin: 20px auto;
     padding: 20px;
-    box-sizing: border-box;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block;
+    font-family: Arial, sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    overflow-y: auto; /* Agrega scroll interno si es necesario */
+    max-height: 90vh; /* Limita la altura al 90% del viewport */
+  }
+  
+  /* Title */
+  .title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Form container */
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Form row: align fields in a row */
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+  }
+  
+  /* Form group */
+  .form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group label {
     margin-bottom: 5px;
     font-weight: bold;
-}
-
-.form-group input, 
-.form-group select {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  /* Input and Select */
+  .form-control {
+    padding: 8px 10px;
+    font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 4px;
-}
-
-button {
+    background-color: #fff;
+    transition: border-color 0.2s ease-in-out;
+  }
+  
+  .form-control:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  /* Button */
+  .btn-submit {
     padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
     background-color: #007bff;
     border: none;
     border-radius: 4px;
-    color: white;
     cursor: pointer;
-}
-
-button:hover {
+    text-align: center;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .btn-submit:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+  }
+  
+  .btn-submit:hover:not(:disabled) {
     background-color: #0056b3;
-}
-
-.form-row {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 1rem;
-}
-
-.form-group.col-6 {
-    flex: 0 0 50%;
-    max-width: 50%;
-    padding-right: 1rem;
-    box-sizing: border-box;
-}
-
-@media (max-width: 768px) {
-    .form-group.col-6 {
-        flex: 0 0 100%;
-        max-width: 100%;
-        padding-right: 0;
-    }
-}
+  }

@@ -1,5 +1,5 @@
 export class Equipo {
-    id?: number;
+    equipoId?: number;
     nombre!: string;
     serie!: string;
     modelo!: string;

@@ -1,0 +1,44 @@
+<div class="container">
+  <h2>Lista de Funcionarios</h2>
+  
+  <!-- Botón para redirigir al formulario de creación -->
+  <div class="mb-3">
+    <button class="btn btn-success" (click)="navigateToCreate()">Crear Nuevo Funcionario</button>
+  </div>
+  
+  <!-- Tabla de funcionarios -->
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Identificación</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let funcionario of funcionarios">
+        <td>{{ funcionario.funcionarioId }}</td>
+        <td>{{ funcionario.identificacion }}</td>
+        <td>{{ funcionario.nombreFuncionario }}</td>
+        <td>{{ funcionario.apellidoFuncionario }}</td>
+        <td>
+          <!-- Botón para redirigir al formulario de edición -->
+          <button 
+            class="btn btn-primary" 
+            (click)="navigateToEdit(funcionario.funcionarioId!)">
+            Editar
+          </button>
+          
+          <!-- Botón para eliminar un funcionario -->
+          <button 
+            class="btn btn-danger" 
+            (click)="deleteFuncionario(funcionario.funcionarioId!)">
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

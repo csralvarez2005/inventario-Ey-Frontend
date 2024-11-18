@@ -41,12 +41,12 @@
       </thead>
       <tbody>
         <tr *ngFor="let area of filteredAreas()">
-          <td>{{ area.id! }}</td>
+          <td>{{ area.areaId! }}</td>
           <td>{{ area.nombre! }}</td>
           <td>{{ area.tipo! }}</td>
           <td>
-            <a [routerLink]="['/areas/edit', area.id!]" class="btn btn-warning">Editar</a>
-            <button (click)="area.id && deleteArea(area.id!)" class="btn btn-danger ml-2">Eliminar</button>
+            <a [routerLink]="['/areas/edit', area.areaId!]" class="btn btn-warning">Editar</a>
+            <button (click)="area.areaId && deleteArea(area.areaId!)" class="btn btn-danger ml-2">Eliminar</button>
           </td>
         </tr>
       </tbody>

@@ -1,1 +1,16 @@
-<p>inicio works!</p>
+<div class="container">
+    <h1>Listado de Áreas</h1>
+  
+    <!-- Mensaje de error -->
+    <div *ngIf="errorMessage" class="error">
+      <p>{{ errorMessage }}</p>
+    </div>
+  
+    <!-- Lista de áreas -->
+    <div class="card-container">
+      <div *ngFor="let area of areas" class="card">       
+        <p> {{ area.nombre }}</p>
+        <p> {{ area.tipo }}</p>
+      </div>
+    </div>
+  </div>

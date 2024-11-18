@@ -1,25 +1,29 @@
 <div class="d-flex">
-    <!-- Menú Vertical -->
-    <nav class="nav flex-column bg-primary p-3" style="width: 250px; height: 100vh;">
-      <a class="navbar-brand text-white" href="#">Dashboard</a>
-      <ul class="nav flex-column">
-        <li class="nav-item">
-          <a class="nav-link text-white" routerLink="/inicio">Inicio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" routerLink="/area">Área</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" routerLink="/equipos">Equipos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" routerLink="/usuarios">Usuarios</a>
-        </li>
-      </ul>
-    </nav>
-  
-    <!-- Contenido Principal -->
-    <div class="flex-grow-1 p-4">
-      <router-outlet></router-outlet>
-    </div>
+  <!-- Menú Vertical -->
+  <nav class="nav flex-column p-3" style="width: 250px; height: 100vh; background-color: #333;">
+    <a class="navbar-brand text-white" href="#">Dashboard</a>
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLink="/inicio">Inicio</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLink="/areas">Área</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLink="/equipos">Equipos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLink="/funcionarios">Funcionarios</a>
+      </li>
+      <!-- Enlace al nuevo componente de Asignación de Equipos -->
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLink="/asignaciones">Asignación de Equipos</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Contenido Principal -->
+  <div class="flex-grow-1 p-4">
+    <router-outlet></router-outlet>
   </div>
+</div>

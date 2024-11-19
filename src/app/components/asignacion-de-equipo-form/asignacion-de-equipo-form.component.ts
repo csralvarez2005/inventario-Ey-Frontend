@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AsignacionEquipoService } from '../../services/asignacion-equipo.service';
 import { AsignacionEquipo } from 'src/app/models/asignacion-equipo.model';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-asignacion-de-equipo-form',
@@ -22,7 +23,8 @@ export class AsignacionDeEquipoFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private asignacionEquipoService: AsignacionEquipoService
+    private asignacionEquipoService: AsignacionEquipoService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -71,23 +73,24 @@ export class AsignacionDeEquipoFormComponent implements OnInit {
       fechaAsignacion: formValue.fechaAsignacion,
     };
 
-    this.asignacionEquipoService.createAsignacion(asignacionDTO).subscribe(
-      (response) => {
+    this.asignacionEquipoService.createAsignacion(asignacionDTO).subscribe({
+      next: () => {
         Swal.fire({
           icon: 'success',
           title: '¡Éxito!',
           text: 'Equipo asignado con éxito.',
         });
         this.asignacionForm.reset();
+        this.router.navigate(['/asignaciones']); // Redirección al componente principal
       },
-      (error) => {
+      error: (error) => {
         Swal.fire({
           icon: 'error',
           title: 'Error',
           text: `Error al asignar equipo: ${error.message}`,
         });
-      }
-    );
+      },
+    });
   }
 
   cancelarEdicion(): void {

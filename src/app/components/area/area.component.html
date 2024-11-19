@@ -45,7 +45,7 @@
           <td>{{ area.nombre! }}</td>
           <td>{{ area.tipo! }}</td>
           <td>
-            <a [routerLink]="['/areas/edit', area.areaId!]" class="btn btn-warning">Editar</a>
+            <a [routerLink]="['/areas/edit', area.areaId!]" class="btn btn-primary">Editar</a>
             <button (click)="area.areaId && deleteArea(area.areaId!)" class="btn btn-danger ml-2">Eliminar</button>
           </td>
         </tr>

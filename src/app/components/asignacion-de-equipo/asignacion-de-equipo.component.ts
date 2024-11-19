@@ -3,6 +3,8 @@ import { AsignacionEquipo } from '../../models/asignacion-equipo.model';
 import { AsignacionEquipoService } from '../../services/asignacion-equipo.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import * as XLSX from 'xlsx';
+
 @Component({
   selector: 'app-asignacion-de-equipo',
   templateUrl: './asignacion-de-equipo.component.html',
@@ -14,7 +16,7 @@ export class AsignacionDeEquipoComponent implements OnInit {
   isEditing: boolean = false; // Indica si se está editando un registro
   asignacionSeleccionada: AsignacionEquipo | null = null; // Registro seleccionado para editar
 
-  constructor(private asignacionEquipoService: AsignacionEquipoService) {}
+  constructor(private asignacionEquipoService: AsignacionEquipoService, private router: Router) {}
 
   ngOnInit(): void {
     this.cargarAsignaciones();
